@@ -2,7 +2,7 @@
 
 versions_to_keep=2
 
-function_names=$(aws lambda list-functions | jq -r '.Functions[] .FunctionName')
+function_names=$(aws lambda list-functions --no-paginate | jq -r '.Functions[] .FunctionName')
 
 for function_name in ${function_names}; do
     echo ${function_name}
